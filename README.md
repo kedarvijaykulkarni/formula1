@@ -14,9 +14,39 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/kedarvijaykulkarni/formula1.git` this repository
 * `cd formula1`
 * `npm install`
+
+* HTTP
+
+### …or create a new repository on the command line
+
+echo "# formula1" >> README.md
+* `git init`
+* `git add README.md`
+* `git commit -m "first commit"`
+* `git branch -M main`
+* `git remote add origin https://github.com/kedarvijaykulkarni/formula1.git`
+* `git push -u origin main`
+
+* SSH
+
+### …or create a new repository on the command line
+
+* `echo "# formula1" >> README.md`
+* `init`
+* `add README.md`
+* `commit -m "first commit"`
+* `branch -M main`
+* `remote add origin git@github.com:kedarvijaykulkarni/formula1.git`
+* `push -u origin main`
+
+### …or push an existing repository from the command line
+* `remote add origin git@github.com:kedarvijaykulkarni/formula1.git`
+* `branch -M main`
+* `push -u origin main`
+
 
 ## Running / Development
 
@@ -54,3 +84,68 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+
+
+# Advance Configrations
+
+## Change Project Layout Classic layout to Pods layout
+
+* [Project Layouts](https://cli.emberjs.com/release/advanced-use/project-layouts/)
+
+in `.ember-cli` file add usePods to the object as below
+
+`
+  {
+    "disableAnalytics": false,
+    "usePods": true
+  }
+`
+
+add following line in `config/environment.js`
+`
+  podModulePrefix: 'video-games/pods',
+`
+
+
+## SCSS Related changes
+
+Install some basic  repository
+
+* `npm i ember-cli-sass --save-dev`
+* `npm i sass --save-dev`
+* `npm i tachyons-sass --save-dev`
+
+Add some code in the `add default` and in the `ember-cli-build.js`
+
+`
+  sassOptions: {
+    includePaths: [
+      'node_modules/tachyons-sass'
+    ]
+  }
+`
+
+Change the file `app/styles/app.css` to `app/styles/app.scss`
+
+add `app/styles/tachyons.scss` and import required scss from the the tachyons node_modules
+
+then import tachyons in the app.scss
+
+`
+  // Tachyons Modules
+  @import 'tachyons';
+  tachyons.scss
+`
+
+## Test cases coverage checking
+
+you need to install `ember-cli-code-coverage` package for that
+
+in command prompt run following command
+
+`
+  COVERAGE=true ember test
+`
+
+under the coverage folder you can open the index.html file to check the report
